@@ -2,15 +2,16 @@
 
 ![](https://github.com/TanushGo/BertChatBot/blob/main/assets/Github_video.gif)
 
-Website: bertchatbot.azurewebsites.net                // Currently not live
+Website: <bertchatbot.azurewebsites.net>                
+// Currently not live
 
 Overview
-Sentiment Analysis with Bidirectional Encoding Representation Transforms using the Hugging Face library. The chatbot uses the knowledge base to answer questions to query people may have. The chatbot is knowledgable about questions relating to university and provides students with information about being a student at the University of California, Irvine
+Sentiment Analysis with Bidirectional Encoding Representation Transforms using the Hugging Face library. The chatbot uses the knowledge base to answer questions to query people may have. The chatbot is knowledgable about questions relating to university and provides students with information about being a student at the University of California, Irvine.
 
-The jupyter file explains a lot about the process of developing the model using the dataset, and the various different aspects of Microsoft Azure. 
+The jupyter file explains a lot about the process of using gradio, developing the model with the dataset, and the various different aspects of Microsoft Azure. 
 
 ## Environment
-The conda.yaml file in the environment folder
+Azure uses docker images with conda to develop the environment in which the model is run. The conda.yaml lists the various dependencies used by the model and in the development processThe conda.yaml file in the environment folder
 
 ## Model Development & Training
 ![image](https://github.com/TanushGo/BertChatBot/assets/94217537/5d5cbf2f-5e83-418a-8e50-41db52345f61)
@@ -20,3 +21,9 @@ The conda.yaml file in the environment folder
 
 
 ## App Deployment
+The deployment is made on a Azure web app hosted in the cloud. It calls the model endpoint with query inputs from the user and gives out results. The deployment is done with python using the requirments.txt and the main.py runs on the server to create the frontend with gradio and connect it with REST api to the model. The frontend deployment uses FASTapi for creating the app. 
+
+`python -m gunicorn main:app -k uvicorn.workers.UvicornWorker` 
+
+is the command run on deployment to create the app and handle the api calls from the backend as well as with we browsers. 
+The app is currently offline to preserve cost. 

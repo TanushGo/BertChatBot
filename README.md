@@ -3,7 +3,7 @@
 
 ![](https://github.com/TanushGo/BertChatBot/blob/main/assets/Github_video.gif)
 
-Website: [link](bertchatbot.azurewebsites.net)            
+Website: <https://bertchatbot.azurewebsites.net/>
 // Currently not live
 
 Overview

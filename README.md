@@ -12,6 +12,9 @@ Sentiment Analysis with Bidirectional Encoding Representation Transforms using t
 The jupyter file explains a lot about the process of using gradio, developing the model with the dataset, and the various different aspects of Microsoft Azure. 
 
 ## Model Development & Training
+The model is trained using the data with tokenizer to better fit to the project scope. It was developed on the basis of accurately prediciting tags that a question could belong to. This simplifies the problem of question answering to utilizing a list of answers instead of generating new answers which will require a much larger initial dataset along with greater compute resources. This also solves the problem scope of having a chat application specifically for a platform like a school website or an informational booth. 
+
+The model is trained on the dataset, and has an evaluation accuracy of around 92% it successfully creates question labels for a large variety of questions. This increases the usablility in a commercial setting. 
 ![image](https://github.com/TanushGo/BertChatBot/assets/94217537/5d5cbf2f-5e83-418a-8e50-41db52345f61)
 
 ## Azure 

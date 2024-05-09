@@ -11,17 +11,21 @@ Sentiment Analysis with Bidirectional Encoding Representation Transforms using t
 
 The jupyter file explains a lot about the process of using gradio, developing the model with the dataset, and the various different aspects of Microsoft Azure. 
 
-## Environment
-Azure uses docker images with conda to develop the environment in which the model is run. The conda.yaml lists the various dependencies used by the model and in the development processThe conda.yaml file in the environment folder
-
 ## Model Development & Training
 ![image](https://github.com/TanushGo/BertChatBot/assets/94217537/5d5cbf2f-5e83-418a-8e50-41db52345f61)
 
+## Azure 
+![DVSM](https://github.com/TanushGo/BertChatBot/assets/94217537/6c933bc2-5666-497b-beaa-0d588630972f)
 
-## Azure Model Endpoint
+### Environment
+Azure uses docker images with conda to develop the environment in which the model is run. The conda.yaml lists the various dependencies used by the model and in the development processThe conda.yaml file in the environment folder
 
 
-## App Deployment
+
+### Azure Model Endpoint
+
+
+### App Deployment
 The deployment is made on a Azure web app hosted in the cloud. It calls the model endpoint with query inputs from the user and gives out results. The deployment is done with python using the requirments.txt and the main.py runs on the server to create the frontend with gradio and connect it with REST api to the model. The frontend deployment uses FASTapi for creating the app. 
 
 `python -m gunicorn main:app -k uvicorn.workers.UvicornWorker` 

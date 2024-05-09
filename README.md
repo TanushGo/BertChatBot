@@ -18,6 +18,8 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
 
 
 ![](https://github.com/TanushGo/BertChatBot/blob/main/assets/Github_video.gif)
@@ -45,11 +47,12 @@ Azure is a great platform to train and deploy models developed using python libr
 ![DVSM](https://github.com/TanushGo/BertChatBot/assets/94217537/6c933bc2-5666-497b-beaa-0d588630972f)
 
 ### Environment
-Azure uses docker images with conda to develop the environment in which the model is run. The conda.yaml lists the various dependencies used by the model and in the development processThe conda.yaml file in the environment folder
+Azure uses docker images with conda to develop the environment in which the model is run. The conda.yaml lists the various dependencies used by the model and in the development process. The docker image uses an ubuntu deployment and conda downloads all the dependices. The conda.yaml file is in the environment folder
 
 
 
 ### Azure Model Endpoint
+The scoring file takes the data provided by the api call, and loads the model on the endpoint deployment. The model endpoint runs the deployment of the model on the text and returns the tag prediction utilizing the api. The endpoint utilizes the key to protect the endpoint and encrpyt the data. 
 
 
 ### App Deployment

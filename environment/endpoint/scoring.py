@@ -5,7 +5,7 @@ import mlflow
 from pprint import pprint
 import json
 from transformers import BertTokenizerFast, BertForSequenceClassification, pipeline
-#from optimum.bettertransformer import BetterTransformer
+
 
 
 def init():
@@ -53,43 +53,20 @@ def init():
         model = BertForSequenceClassification.from_pretrained(model_path)
         device = "cpu"
 
-    # # Optimize the model
-    # if device != "cpu":
-    #     try:
-    #         model = BetterTransformer.transform(model, keep_original_model=False)
-    #         print("[INFO] BetterTransformer loaded.")
-    #     except Exception as e:
-    #         print(
-    #             f"[ERROR] Error when converting to BetterTransformer. An unoptimized version of the model will be used.\n\t> {e}"
-    #         )
 
     chatbot= pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
     mlflow.log_param("device", device)
     mlflow.log_param("model", type(model).__name__)
 
 
-def predict(text):
-    
-    inputs = tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt").to(device)
-    outputs = model(**inputs)
 
-    probs = outputs[0].softmax(1)
-    pred_label_idx = probs.argmax()
-    pred_label = model.config.id2label[pred_label_idx.item()]
-
-    return {"label": pred_label, "score": probs[0][pred_label_idx.item()].item()}
 
 def run(raw_data):
 
-    #print(f"[INFO] Reading new mini-batch of {len(mini_batch)} file(s).")
-    
     data = json.loads(raw_data)["data"]
 
-    # reuslt = predict(data)
     result = chatbot(data)[0]
     result["id"] = model.config.label2id[result['label']]
-
-
 
     #mlflow.log_metric("rows_per_second", rps)
     return result

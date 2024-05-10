@@ -33,7 +33,7 @@ def response(text):
 
     url = 'https://chatbot-endpoint-97f2ceaa.eastus.inference.ml.azure.com/score'
     # Replace this with the primary/secondary key, AMLToken, or Microsoft Entra ID token for the endpoint
-    api_key = 'hopwmiqdXuguiFVzBvXEi0dc1lwymo5A'
+    api_key = os.environ.get('API_KEY')
     if not api_key:
         raise Exception("A key should be provided to invoke the endpoint")
 

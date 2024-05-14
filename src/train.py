@@ -3,6 +3,8 @@ import Dataloader
 import mlflow
 import mlflow.sklearn
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+import pandas as pd
+import torch
 
 def compute_metrics(pred):
 
@@ -84,7 +86,8 @@ def trainRun(trainer,model):
     mlflow.end_run()
 
 def predict(model, tokenizer, text):
-    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
     inputs = tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt").to(device)
     outputs = model(**inputs)
 

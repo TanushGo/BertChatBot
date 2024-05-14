@@ -21,3 +21,6 @@ dependencies:
     - torch
     - xformers
     - azureml-inference-server-http
+    - azure.ai.ml
+    - azure.identity
+    - xgboost

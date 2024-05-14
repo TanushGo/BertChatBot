@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import pandas as pd
 import torch
 
+#Compute the metrics for the model
 def compute_metrics(pred):
 
     labels = pred.label_ids
@@ -20,6 +21,7 @@ def compute_metrics(pred):
         'Recall': recall
     }
 
+#Create a dataframe from the json file
 def createDF(file):
     #Load Data from the file
     intents = pd.read_json(file)
@@ -41,7 +43,7 @@ def createDF(file):
 
     return df, label2id, id2label, num_labels
 
-
+#Create a dataloader for the model
 def createDataLoader(df, tokenizer):
     #Getting the data from the frame and splitting into training and testing data
     X, y= list(df['Pattern']), list(df['labels'])
@@ -55,7 +57,7 @@ def createDataLoader(df, tokenizer):
 
     return train_dataloader, test_dataloader
 
-
+#Train the model
 def trainRun(trainer,model):
     # Start Logging
     mlflow.start_run()
@@ -85,6 +87,7 @@ def trainRun(trainer,model):
     # Stop Logging
     mlflow.end_run()
 
+#Predict the label of the text
 def predict(model, tokenizer, text):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 

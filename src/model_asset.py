@@ -19,15 +19,17 @@ ml_client = MLClient(
 
 model_path = "chatbot"
 
-
+# Load the model and tokenizer
 model = BertForSequenceClassification.from_pretrained(model_path)
 tokenizer= BertTokenizerFast.from_pretrained(model_path)
-#torch.jit._state.enable()
+
+# Create a pipeline
 chatbot= pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 model_path = "chatbot_pipelines"
 chatbot.save_pretrained(model_path)
 
+# Register the model
 model_name = 'BertChatBotPipeline'
 model = ml_client.models.create_or_update(
     Model(name=model_name, path='chatbot_pipelines', type=AssetTypes.CUSTOM_MODEL)

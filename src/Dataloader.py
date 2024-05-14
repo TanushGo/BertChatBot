@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import Dataset
 import pandas as pd
 
+#create a dataframe to store the patterns and tags
 def create_df():
     df = pd.DataFrame({
         'Pattern' : [],
@@ -10,7 +11,7 @@ def create_df():
     
     return df
 
-
+#extract the patterns and tags from the json file
 def extract_json_info(json_file, df):
     
     for intent in json_file['intents']:
@@ -22,7 +23,7 @@ def extract_json_info(json_file, df):
                 
     return df
 
-
+#preprocess the data
 class DataLoader(Dataset):
     
     def __init__(self, encodings, labels):

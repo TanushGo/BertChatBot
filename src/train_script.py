@@ -15,11 +15,12 @@ ml_client = MLClient(
     workspace_name="BertChatBot",
 )
 
-#data_asset = ml_client.data.get(name="univeristy-info", version="uci")
+# Load the data asset
+data_asset = ml_client.data.get(name="univeristy-info", version="uci")
 
+# Load the data
+df, label2id, id2label, num_labels = train.createDF(data_asset.path)
 
-#df, label2id, id2label, num_labels = train.createDF(data_asset.path)
-df, label2id, id2label, num_labels = train.createDF("D:\\UCI\\Tanush\\Programs\\BertChatBot\\src\\deploy\\intents.json")
 #Create the pretrained model with variables depending on the data
 model_name = "bert-base-uncased"
 max_len = 256
@@ -54,6 +55,7 @@ training_args = TrainingArguments(
     load_best_model_at_end=True
 )
 
+#Create the trainer
 trainer = Trainer(
     model=model,
     args=training_args,                 
@@ -73,6 +75,7 @@ q=[trainer.evaluate(eval_dataset=df2) for df2 in [train_dataloader, test_dataloa
 text = "Hello"
 train.predict(model, tokenizer, text)
 
+# Save the model and tokenizer
 model_path = "chatbot"
 trainer.save_model(model_path)
 tokenizer.save_pretrained(model_path)

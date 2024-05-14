@@ -15,6 +15,7 @@ ml_client = MLClient(
 
 custom_env_name = "aml-chatbot-learn"
 
+# Create a custom environment
 pipeline_job_env = Environment(
     name=custom_env_name,
     description="Custom environment for Bert Chatbot pipeline",
